@@ -1,5 +1,21 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Header from "components/Header";
+import { AuthContextProvider } from "context/AuthContext";
+import { Outlet } from "react-router-dom";
+
 function App() {
-  return <></>;
+  const queryClient = new QueryClient();
+
+  return (
+    <AuthContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <Header />
+        <Outlet />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </AuthContextProvider>
+  );
 }
 
 export default App;
