@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import ProductRepositoryImpl from "api/product_repository";
-import { Product } from "types/product";
+import { InputProduct, Product } from "types/product";
 
 const productApi = new ProductRepositoryImpl();
 
@@ -14,7 +14,7 @@ export default function useProducts() {
   );
 
   const addProduct = useMutation(
-    ({ product, url }: { product: Product; url: string }) =>
+    ({ product, url }: { product: InputProduct; url: string }) =>
       productApi.addNewProduct(product, url),
     {
       onSuccess: () => queryClient.invalidateQueries(["products"]),

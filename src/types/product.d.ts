@@ -1,7 +1,7 @@
 export type Product = {
   id: string;
   name: string;
-  price: number | 0;
+  price: number;
   category: string;
   description: string;
   options: string[];
@@ -11,4 +11,14 @@ export type Product = {
 export type CartProduct = Product & {
   option: string;
   quantity: number;
+};
+
+export type InputProduct = {
+  id: string;
+  name: string;
+  price: string;
+  category: string;
+  description: string;
+  options: string;
+  image: string;
 };

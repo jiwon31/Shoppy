@@ -1,11 +1,11 @@
-import { Product } from "types/product";
+import { Product, InputProduct } from "types/product.d";
 import { ref, set, get } from "firebase/database";
 import { database } from "./firebase";
 import { v4 as uuid } from "uuid";
 
 interface ProductRepository {
   getProducts: () => Promise<Product[]>;
-  addNewProduct: (product: Product, image: string) => Promise<void>;
+  addNewProduct: (product: InputProduct, image: string) => Promise<void>;
 }
 
 export default class ProductRepositoryImpl implements ProductRepository {
@@ -19,12 +19,19 @@ export default class ProductRepositoryImpl implements ProductRepository {
       });
   }
 
-  async addNewProduct(product: Product, image: string): Promise<void> {
+  async addNewProduct(product: InputProduct, image: string): Promise<void> {
+    const converted = this.ConvertToProductType(product, image);
+    return set(ref(database, `products/${converted.id}`), converted);
+  }
+
+  private ConvertToProductType(product: InputProduct, image: string): Product {
     const id = uuid();
-    return set(ref(database, `products/${id}`), {
+    return {
       ...product,
       id,
+      price: parseInt(product.price),
+      options: product.options.split(","),
       image,
-    });
+    };
   }
 }

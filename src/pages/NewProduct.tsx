@@ -2,20 +2,20 @@ import { uploadImage } from "api/image_uploader";
 import Button from "components/ui/Button";
 import useProducts from "hooks/useProducts";
 import { useState } from "react";
-import { Product } from "types/product";
+import { InputProduct } from "types/product";
 
-const initialProduct: Product = {
+const initialProduct: InputProduct = {
   id: "",
   name: "",
-  price: 0,
+  price: "",
   category: "",
   description: "",
-  options: [],
+  options: "",
   image: "",
 };
 
 export default function NewProduct() {
-  const [product, setProduct] = useState<Product>(initialProduct);
+  const [product, setProduct] = useState<InputProduct>(initialProduct);
   const [file, setFile] = useState<File | null | undefined>(null);
   const [isUploading, setIsUploading] = useState<boolean>(false);
   const [success, setSuccess] = useState<string | null>(null);
@@ -45,28 +45,12 @@ export default function NewProduct() {
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, files } = e.target;
-    formatByInputName(name, value, files);
-  };
-
-  function formatByInputName(
-    name: string,
-    value: string,
-    files: FileList | null
-  ) {
-    switch (name) {
-      case "file":
-        setFile(files && files[0]);
-        return;
-      case "price":
-        setProduct((product) => ({ ...product, [name]: parseInt(value) }));
-        return;
-      case "options":
-        setProduct((product) => ({ ...product, [name]: value.split(",") }));
-        return;
-      default:
-        setProduct((product) => ({ ...product, [name]: value }));
+    if (name === "file") {
+      setFile(files && files[0]);
+      return;
     }
-  }
+    setProduct((product) => ({ ...product, [name]: value }));
+  };
 
   return (
     <section className="w-full text-center">
@@ -98,7 +82,7 @@ export default function NewProduct() {
         <input
           type="number"
           name="price"
-          value={product.price === 0 ? "" : product.price}
+          value={product.price}
           placeholder="가격"
           required
           onChange={handleChange}
