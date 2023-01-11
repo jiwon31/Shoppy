@@ -1,13 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { User } from "types/user";
-import AuthServiceImpl, { AuthService } from "api/auth_service";
+import AuthService from "api/auth_service";
 
 type Auth = {
   user: User | null;
   authService: AuthService;
 };
 
-const authService = new AuthServiceImpl();
+const authService = new AuthService();
 const AuthContext = createContext<Auth | null>(null);
 
 export function AuthContextProvider({

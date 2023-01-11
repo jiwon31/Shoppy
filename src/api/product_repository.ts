@@ -2,13 +2,7 @@ import { Product, InputProduct } from "types/product.d";
 import { ref, set, get } from "firebase/database";
 import { database } from "./firebase";
 import { v4 as uuid } from "uuid";
-
-interface ProductRepository {
-  getProducts: () => Promise<Product[]>;
-  addNewProduct: (product: InputProduct, image: string) => Promise<void>;
-}
-
-export default class ProductRepositoryImpl implements ProductRepository {
+export default class ProductRepository {
   async getProducts(): Promise<Product[]> {
     return get(ref(database, "products")) //
       .then((snapshot) => {

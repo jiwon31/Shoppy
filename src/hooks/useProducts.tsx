@@ -1,8 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import ProductRepositoryImpl from "api/product_repository";
+import ProductRepository from "api/product_repository";
 import { InputProduct, Product } from "types/product";
 
-const productApi = new ProductRepositoryImpl();
+const productApi = new ProductRepository();
 
 export default function useProducts() {
   const queryClient = useQueryClient();

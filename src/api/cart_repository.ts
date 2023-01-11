@@ -1,14 +1,7 @@
 import { CartProduct } from "../types/product";
 import { ref, set, get, remove } from "firebase/database";
 import { database } from "./firebase";
-
-interface CartRepository {
-  getCart: (userId: string) => Promise<CartProduct[]>;
-  addOrUpdateToCart: (userId: string, product: CartProduct) => Promise<void>;
-  removeFromCart: (userId: string, productId: string) => Promise<void>;
-}
-
-export default class CartRepositoryImpl implements CartRepository {
+export default class CartRepository {
   async getCart(userId: string): Promise<CartProduct[]> {
     return get(ref(database, `carts/${userId}`)) //
       .then((snapshot) => {

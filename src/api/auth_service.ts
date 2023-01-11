@@ -8,13 +8,7 @@ import { auth, database, provider } from "./firebase";
 import { ref, get } from "firebase/database";
 import { User } from "types/user";
 
-export interface AuthService {
-  login: () => void;
-  logout: () => void;
-  onUserStateChange: (callback: (user: User | null) => void) => void;
-}
-
-export default class AuthServiceImpl implements AuthService {
+export default class AuthService {
   login() {
     signInWithPopup(auth, provider) //
       .catch(console.error);

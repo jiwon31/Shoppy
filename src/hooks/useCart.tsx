@@ -1,9 +1,9 @@
 import { useAuthContext } from "context/AuthContext";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { CartProduct } from "types/product";
-import CartRepositoryImpl from "api/cart_repository";
+import CartRepository from "api/cart_repository";
 
-const cartApi = new CartRepositoryImpl();
+const cartApi = new CartRepository();
 
 export default function useCart() {
   const { user } = useAuthContext();
