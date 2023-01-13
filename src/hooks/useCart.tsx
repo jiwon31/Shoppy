@@ -3,9 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { CartProduct } from "types/product";
 import CartRepository from "api/cart_repository";
 
-const cartApi = new CartRepository();
-
-export default function useCart() {
+export default function useCart(cartApi = new CartRepository()) {
   const { user } = useAuthContext();
   const uid = user!.uid;
   const queryClient = useQueryClient();
