@@ -1,5 +1,5 @@
 import { uploadImage } from "api/image_uploader";
-import Button from "components/ui/Button";
+import { Button } from "components/ui/Button";
 import useProducts from "hooks/useProducts";
 import { useState } from "react";
 import { InputProduct } from "types/product";

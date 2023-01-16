@@ -4,7 +4,7 @@ import { BsFillPencilFill } from "react-icons/bs";
 import { useAuthContext } from "context/AuthContext";
 import Avatar from "./Avatar";
 import CartStatus from "./CartStatus";
-import Button from "./ui/Button";
+import { Button } from "./ui/Button";
 
 export default function Header() {
   const { user, authService } = useAuthContext();

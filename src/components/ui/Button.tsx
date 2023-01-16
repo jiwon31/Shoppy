@@ -1,4 +1,5 @@
 import { CgSpinner } from "react-icons/cg";
+import { memo } from "react";
 
 type ButtonProps = {
   text: string;
@@ -6,7 +7,7 @@ type ButtonProps = {
   disabled?: boolean;
 };
 
-export default function Button({ text, onClick, disabled }: ButtonProps) {
+export const Button = memo(({ text, onClick, disabled }: ButtonProps) => {
   return (
     <button
       className="w-full flex justify-center items-center px-4 py-2 text-white bg-indigo-400 rounded-sm hover:brightness-110"
@@ -19,4 +20,4 @@ export default function Button({ text, onClick, disabled }: ButtonProps) {
       {text}
     </button>
   );
-}
+});

@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { Product } from "types/product";
 import { useState, useEffect } from "react";
-import Button from "components/ui/Button";
+import { Button } from "components/ui/Button";
 import useCart from "hooks/useCart";
 
 export default function ProductDetail() {

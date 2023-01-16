@@ -1,6 +1,6 @@
 import CartProductItem from "components/CartProductItem";
 import TotalPrice from "components/TotalPrice";
-import Button from "components/ui/Button";
+import { Button } from "components/ui/Button";
 import useCart from "hooks/useCart";
 
 export default function MyCart() {
