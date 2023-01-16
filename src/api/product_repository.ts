@@ -14,11 +14,11 @@ export default class ProductRepository {
   }
 
   async addNewProduct(product: InputProduct, image: string): Promise<void> {
-    const converted = this.ConvertToProductType(product, image);
+    const converted = this.convertToProductType(product, image);
     return set(ref(database, `products/${converted.id}`), converted);
   }
 
-  private ConvertToProductType(product: InputProduct, image: string): Product {
+  private convertToProductType(product: InputProduct, image: string): Product {
     const id = uuid();
     return {
       ...product,
