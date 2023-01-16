@@ -1,6 +1,6 @@
 import { AiFillPlusCircle } from "react-icons/ai";
 import { FaEquals } from "react-icons/fa";
-import Price from "./Price";
+import { Price } from "./ui/Price";
 
 const SHIPPING = 3000;
 
