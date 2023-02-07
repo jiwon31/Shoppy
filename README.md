@@ -1,6 +1,6 @@
 # Shoppy
 
-### Shoppy App with React, TypeScript, Firebase, Cloudinary
+### Shoppy App with React, TypeScript, Firebase, Cloudinary, React Query
 
 - 구글 계정 로그인, 로그아웃
 - 어드민 유저일 경우, 새로운 제품 추가하기 가능
